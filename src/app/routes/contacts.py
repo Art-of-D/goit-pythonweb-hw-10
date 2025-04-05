@@ -4,6 +4,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.app.database.db import get_db
 from src.app.response.schemas import ContactBase, ContactListResponse
 from src.app.controllers.contacts import ContactsController
+from src.app.services.auth import get_current_user
+from src.app.response.schemas import User
 
 
 router = APIRouter(prefix="/contacts", tags=["contacts"])
@@ -29,9 +31,10 @@ async def read_contact(contact_id: int, db: AsyncSession = Depends(get_db)):
 
 
 @router.post("/", response_model=ContactBase, status_code=status.HTTP_201_CREATED)
-async def create_contact(body: ContactBase, db: AsyncSession = Depends(get_db)):
+async def create_contact(body: ContactBase, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
     conctact_controller = ContactsController(db)
-    try:    
+    try: 
+        body.user_id = current_user.id
         contact = await conctact_controller.create_contact(body)
         return contact
     except Exception as e:
