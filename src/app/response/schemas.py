@@ -19,9 +19,24 @@ class ContactBase(BaseModel):
             email=obj.email,
             phone=obj.phone,
             birthdate=obj.birthdate.strftime("%Y-%m-%d"),
+            notes=obj.notes
+        )  
+
+class ContactCreate(ContactBase):
+    user_id: int
+    @classmethod
+    def from_orm(cls, obj):
+        return cls(
+            id=obj.id,
+            name=obj.name,
+            surname=obj.surname,
+            email=obj.email,
+            phone=obj.phone,
+            birthdate=obj.birthdate.strftime("%Y-%m-%d"),
             notes=obj.notes,
+            user_id=obj.user_id
         )
-    
+
 class ContactListResponse(BaseModel):
     contacts: List[ContactBase]
 
