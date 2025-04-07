@@ -52,6 +52,9 @@ class UserCreate(BaseModel):
     email: str
     password: str
 
+class ConfirmResponse(BaseModel):
+    message: str
+
 class Token(BaseModel):
     access_token: str
     token_type: str

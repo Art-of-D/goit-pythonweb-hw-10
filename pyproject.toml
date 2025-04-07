@@ -19,6 +19,7 @@ dependencies = [
     "passlib[bcrypt] (>=1.7.4,<2.0.0)",
     "python-jose[cryptography] (>=3.4.0,<4.0.0)",
     "python-multipart (>=0.0.20,<0.0.21)",
+    "fastapi-mail (>=1.4.2,<2.0.0)",
 ]
 
 [tool.poetry.scripts]

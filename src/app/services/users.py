@@ -31,3 +31,13 @@ class UserService:
         await self.db.commit()
         await self.db.refresh(user)
         return user
+    
+    async def delete_user(self, user_id: int):
+        await self.db.delete(User, user_id)
+        await self.db.commit()
+        return
+
+    async def confirm_email(self, email: str):
+        user = await self.get_user_by_email(email)
+        user.confirmed = True
+        await self.db.commit()

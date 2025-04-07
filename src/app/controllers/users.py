@@ -30,9 +30,8 @@ class UserController:
     user = await self.db.delete_user(user_id)
     return user
   
-  # async def confirm_email(self, token: str):
-  #   user = await self.db.confirm_email(token)
-  #   return user
+  async def confirm_email(self, email: str):
+    return await self.db.confirm_email(email)
   
   # async def reset_password(self, email: str):
   #   user = await self.db.reset_password(email)
