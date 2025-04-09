@@ -21,6 +21,7 @@ conf = ConnectionConfig(
     TEMPLATE_FOLDER=Path(__file__).parent / "templates",
 )
 
+
 async def send_email(email: EmailStr, username: str, host: str):
     try:
         token_verification = create_email_token({"sub": email})

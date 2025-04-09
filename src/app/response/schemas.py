@@ -19,11 +19,13 @@ class ContactBase(BaseModel):
             email=obj.email,
             phone=obj.phone,
             birthdate=obj.birthdate.strftime("%Y-%m-%d"),
-            notes=obj.notes
-        )  
+            notes=obj.notes,
+        )
+
 
 class ContactCreate(ContactBase):
     user_id: int
+
     @classmethod
     def from_orm(cls, obj):
         return cls(
@@ -34,8 +36,9 @@ class ContactCreate(ContactBase):
             phone=obj.phone,
             birthdate=obj.birthdate.strftime("%Y-%m-%d"),
             notes=obj.notes,
-            user_id=obj.user_id
+            user_id=obj.user_id,
         )
+
 
 class ContactListResponse(BaseModel):
     contacts: List[ContactBase]
@@ -47,13 +50,16 @@ class User(BaseModel):
     email: str
     avatar: Optional[str]
 
+
 class UserCreate(BaseModel):
     name: str
     email: str
     password: str
 
+
 class ConfirmResponse(BaseModel):
     message: str
+
 
 class Token(BaseModel):
     access_token: str

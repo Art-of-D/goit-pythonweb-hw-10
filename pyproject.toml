@@ -20,6 +20,7 @@ dependencies = [
     "python-jose[cryptography] (>=3.4.0,<4.0.0)",
     "python-multipart (>=0.0.20,<0.0.21)",
     "fastapi-mail (>=1.4.2,<2.0.0)",
+    "cloudinary (>=1.43.0,<2.0.0)",
 ]
 
 [tool.poetry.scripts]

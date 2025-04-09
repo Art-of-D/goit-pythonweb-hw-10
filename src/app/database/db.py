@@ -9,7 +9,6 @@ from sqlalchemy.ext.asyncio import (
 from src.app.config.config import settings as config
 
 
-
 class DatabaseSessionManager:
     def __init__(self, url: str):
         self._engine: AsyncEngine | None = create_async_engine(url)
